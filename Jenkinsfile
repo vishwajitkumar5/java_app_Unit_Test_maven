@@ -6,16 +6,13 @@ pipeline {
     stages {
         
         
-        stage('Checkout') {
-
-            //when{ expression{params.action == 'create'}}
-
+        stage('Unit Test maven') {
+           // when{ expression{params.action == 'create'}}
             steps {
-            gitCheckout(
-                branch: "main",
-                url: "https://github.com/vishwajitkumar5/java_app.git"
-                )
-               // checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[url: 'https://github.com/vishwajitkumar5/mrvishu_java_app.git']]])
+                script{
+                    
+                    mvnTest()
+                }
             }
         }
     }
